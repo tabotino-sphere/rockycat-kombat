@@ -1,347 +1,329 @@
-# 🥊 RockyCat Kombat: Underground Arena
+# 🥊 RockyCat: Underground Arena
 
 ### *Fighting for the Underdogs*
 
-RockyCat: Underground Arena is a **mobile-first GameFi fighting platform** that combines **real-time combat gameplay, blockchain-powered rewards, betting mechanics, and financial accessibility** into a unified ecosystem.
+RockyCat: Underground Arena is a **mobile-first GameFi fighting platform** that combines **real-time combat gameplay**, **betting mechanics**, and a **token-based reward system** into one unified ecosystem.
 
-This project transforms **RockyCat Coin (RKC)** into a **functional in-game economy**, where users can:
-
-> 🎮 Play →  Earn → 💸 Spend → 🎯 Compete → 🔁 Repeat
+> 🎮 Play → 🪙 Earn → 💸 Spend → 🎯 Bet → 🔁 Repeat
 
 ---
 
-## 🚀 Project Overview
+# 🚀 Vision
 
-RockyCat is not just a game — it is a **self-sustaining digital economy** designed to drive:
+RockyCat aims to create a **competitive, skill-based fighting ecosystem** where:
 
-* Player engagement through skill-based rewards
-* Token utility through gameplay and transactions
-* Revenue via ads, betting, and in-app purchases
-* Accessibility for both crypto and non-crypto users
+* Players earn rewards based on performance
+* Spectators can participate through betting
+* A full digital economy is powered by RockyCat Coin (RKC)
 
 ---
 
-## 🏗 Architecture Overview
+# 🧱 System Architecture Overview
 
-The system follows a **client-server architecture** with strict **server-authoritative logic**.
+The application is divided into **four main layers**, each using a different technology stack for performance and scalability.
 
 ```text
-Unity Client (C#)
+Unity Game Client (C#)
         │
         ▼
-API Gateway (Auth, Routing)
+ WebSocket Communication
+        │
+        ▼
+ Node.js Backend (Game Logic + Betting + Wallet)
         │
  ┌──────┼───────────────┐
  ▼      ▼               ▼
-Game   Betting        Wallet
-Service Service       Service
-        │
-        ▼
-   Reward Engine
-        │
-        ▼
-   Data Layer (PostgreSQL + Redis + Blockchain)
+PostgreSQL   Redis   Blockchain (Future)
 ```
 
 ---
 
-## 🎮 Game Client (Unity + C#)
+# 🧩 Tech Stack Breakdown
 
-The **Unity engine** powers all gameplay experiences.
+## 🎮 1. Game Client (Unity + C#)
+
+### Role:
+
+Handles **all gameplay and player interaction**
 
 ### Responsibilities:
 
-* Real-time PvP combat
-* PvE missions and AI
-* Character progression (Kittens → Lions)
-* UI/UX and animations
-* Player input and rendering
+* Real-time combat system (attacks, combos, hit detection)
+* Character movement and animations
+* PvP fight interface (HUD, health bars, timers)
+* Sending player input to server
+* Receiving game state updates
 
-### Why Unity?
+### Why Unity:
 
+* High-performance rendering (60 FPS+)
+* Built-in physics and animation systems
 * Cross-platform (Android & iOS)
-* High-performance combat systems
-* Scalable game development pipeline
 
 ---
 
-## 🌐 Backend System (Server-Authoritative)
+## 🌐 2. Backend Server (Node.js)
 
-All critical systems run on the backend to ensure **security, fairness, and scalability**.
+### Role:
 
-### Core Services:
+Acts as the **brain of the system** (server-authoritative)
 
-#### 🎮 Game Service
+### Responsibilities:
 
-* Matchmaking (skill-based)
-* PvP session management
-* PvE progression validation
-* Game result verification
+### 🔐 Authentication Service
 
-#### 🎯 Betting Service
+* User registration & login
+* JWT-based session management
 
-* Match betting pools
-* Odds and payout calculation
-* Bet locking before match start
-* Secure winnings distribution
+### 🎮 Game Service
 
-#### 👛 Wallet Service
+* Matchmaking (pair players)
+* Validate game results
+* Prevent cheating
 
-* RKC balance tracking
-* Deposit & withdrawal handling
-* Wallet integrations (crypto)
+### 🎯 Betting Service
 
-#### 🎁 Reward Engine
+* Create betting pools
+* Lock bets before matches
+* Calculate and distribute winnings
 
-* Fight rewards (PvP/PvE)
-* Milestones and streaks
-* Referral rewards
-* Anti-abuse throttling
+### 🪙 Wallet Service
 
-#### 💳 Payment Service
+* Manage user balances (RKC)
+* Handle deposits & withdrawals (off-chain for MVP)
 
-* Mobile Money (MoMo)
-* OPay integration
-* Fiat ↔ crypto bridge
+### 🎁 Reward Engine
 
-#### 📺 Ad Service
-
-* Rewarded ads
-* Engagement tracking
-* Reward validation
-
-#### 🔔 Notification Service
-
-* Push notifications
-* Event-based alerts
-
-#### 📰 Rocky News Service
-
-* Crypto news aggregation
-* Internal content publishing
+* Distribute rewards after matches
+* Handle streak bonuses and milestones
 
 ---
 
-## 🤑 RockyCat Coin (RKC) Economy
+## ⚡ 3. Real-Time System
 
-RKC powers the entire ecosystem.
+### Technology:
 
-### Earn RKC:
+* WebSockets (Socket.IO)
 
-* Winning fights
-* Completing milestones
-* Daily streaks
-* Tournament rewards
-* Referrals
+### Responsibilities:
 
-### Spend RKC:
-
-* Match entry fees
-* Character upgrades
-* Boosts & lives
-* Tournament access
-* Betting
-
-### 🔥 Token Mechanics:
-
-* Transaction fees applied to all operations
-* Automatic token burn (supply reduction)
-* Reward redistribution
-* Company revenue allocation
+* Live player synchronization
+* Real-time fight updates
+* Betting updates during matches
 
 ---
 
-## 🎯 Betting & Spectator System
+## 🗄 4. Data Layer
 
-Users can participate without playing.
+### PostgreSQL (Persistent Data)
 
-### Features:
+Stores:
 
-* Bet on PvP matches
+* Users
+* Wallet balances
+* Match history
+* Bets
+
+### Redis (Real-Time Data)
+
+Stores:
+
+* Active matches
+* Player sessions
+* Temporary game state
+
+---
+
+## 🪙 5. Blockchain Layer (Future Phase)
+
+### Responsibilities:
+
+* RKC token management
+* Secure transactions
+* Token burn & supply control
+
+⚠️ **Note:**
+For MVP, wallet logic will be handled in the backend (no blockchain yet).
+
+---
+
+# 🎮 Core Features
+
+## ⚔️ Fighting System
+
+* Real-time PvP combat
+* Skill-based gameplay
+* Character progression system
+
+## 🎯 Betting System
+
+* Users can bet on live matches
 * Dynamic betting pools
 * Automatic payout distribution
-* Secure transaction validation
 
-### Flow:
+## 🪙 Economy System
 
-```text
-Bet → Match Starts → Lock Bets → Result → Distribute Winnings
-```
+### Earn:
 
----
+* Winning matches
+* Completing milestones
+* Daily rewards
 
-## 📺 Monetization Model
+### Spend:
 
-Hybrid monetization strategy:
-
-* Rewarded ads
-* In-app purchases
-* Token transaction fees
-* Betting fees
-* Tournament entry fees
-
-### ❤️ Lives System
-
-* Limited gameplay attempts
-* Restore via:
-
-  * Ads
-  * RKC spending
+* Match entry fees
+* Upgrades
+* Betting
 
 ---
 
-## 🐱 Character Progression System
+# 🐱 Character Progression
 
-Players evolve through tiers:
+Players evolve through ranks:
 
 ```text
 Kittens → Cats → Panthers → Cheetahs → Lions
 ```
 
-Each tier unlocks:
+Each level unlocks:
 
 * New abilities
-* Increased stats
+* Higher stats
 * Advanced gameplay mechanics
 
 ---
 
-## 💳 Wallet & Payment Integration
-
-### Crypto Users:
-
-* Wallet connection
-* Deposit & withdraw RKC
-* On-chain transactions
-
-### Non-Crypto Users:
-
-* Mobile Money (MoMo)
-* OPay withdrawals
-
-👉 Designed for **mass adoption beyond crypto-native users**
-
----
-
-## 👥 Referral System
-
-* Unique referral codes
-* Activity-based rewards
-* Transaction-based commissions
-* Viral growth mechanism
-
----
-
-## 🔐 Security & Anti-Abuse
-
-### Core Protections:
-
-* Server-authoritative validation
-* Anti-cheat system
-* Bot detection
-* Secure authentication (JWT)
-* Transaction verification
-* Fraud monitoring
-
----
-
-## 🗄 Data & Infrastructure
-
-### Database:
-
-* PostgreSQL → persistent data
-* Redis → caching & real-time state
-
-### Blockchain:
-
-* Smart contracts (RKC token)
-* Token burn mechanism
-* Secure transaction validation
-
-### Infrastructure:
-
-* Docker containers
-* Kubernetes orchestration
-* Cloud hosting (AWS / GCP)
-
----
-
-## ⚡ Real-Time System
-
-* WebSockets for PvP gameplay
-* Live match synchronization
-* Real-time betting updates
-
----
-
-## 📈 Scalability
-
-Designed to support:
-
-* 10,000+ concurrent users
-* Low-latency gameplay
-* High transaction throughput
-
-### Techniques:
-
-* Horizontal scaling
-* Load balancing
-* Event-driven architecture
-* Caching (Redis)
-
----
-
-## 📊 Non-Functional Requirements
-
-* ⏱ Response time ≤ 5 seconds
-* 📶 99.9% uptime
-* 🔐 Secure data encryption
-* 📱 Android & iOS compatibility
-* 📈 Scalable infrastructure
-
----
-
-## ⚠️ Key Challenges
-
-* Real-time PvP latency
-* Secure betting system
-* Anti-cheat enforcement
-* Token economy balance
-* Preventing bot farming
-
----
-
-## 🧠 Future Roadmap
-
-* AI-based matchmaking
-* NFT fighters
-* DAO governance (RKC holders)
-* Cross-platform expansion (Web/PC)
-* Advanced anti-cheat systems
-
----
-
-## 📂 Documentation
-
-Full Software Requirement Specification available in:
+# 🔄 Game Flow
 
 ```text
-/docs/SRS.pdf
+Login → Matchmaking → Fight → Result → Rewards → Repeat
 ```
 
 ---
 
-## 🌍 Vision
+# 🔗 Communication Flow
 
-RockyCat aims to become a **leading GameFi ecosystem** where:
-
-* Gaming meets finance
-* Skill meets earning
-* Entertainment meets real-world value
+```text
+Player Input (Unity)
+        ↓
+Send via WebSocket
+        ↓
+Backend validates action
+        ↓
+Broadcast to opponent
+        ↓
+Update game state
+```
 
 ---
 
-## 📜 License
+# 🔐 Security Model
+
+* Server-authoritative gameplay (no trust in client)
+* Anti-cheat validation on backend
+* Secure authentication (JWT)
+* Transaction verification system
+
+---
+
+# 📦 Project Structure
+
+```text
+rockycat/
+│
+├── client/               # Unity project (C# game)
+├── backend/              # Node.js server
+├── smart-contracts/      # Blockchain (future)
+├── docs/                 # Documentation (SRS, diagrams)
+└── README.md
+```
+
+---
+
+# ⚙️ Setup Instructions
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/your-repo/rockycat.git
+cd rockycat
+```
+
+---
+
+## 2. Backend Setup
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Server runs on:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 3. Unity Setup
+
+* Open Unity Hub
+* Add `/client` folder
+* Open project
+* Run scene
+
+---
+
+# 🚧 MVP Scope (1 Month Plan)
+
+To ensure fast delivery, the MVP will include:
+
+### ✅ Included:
+
+* Basic PvP fight system
+* Simple matchmaking
+* Fake wallet (off-chain)
+* Basic betting system
+
+### ❌ Excluded (Later Phases):
+
+* Blockchain integration
+* NFTs
+* Advanced AI
+* DAO governance
+
+---
+
+# ⚠️ Key Challenges
+
+* Real-time latency handling
+* Multiplayer synchronization
+* Secure betting logic
+* Preventing cheating and bot abuse
+
+---
+
+# 🧠 Future Roadmap
+
+* AI-based matchmaking
+* NFT fighters
+* Blockchain integration (RKC token)
+* Tournament system
+* Cross-platform expansion (Web & PC)
+
+---
+
+# 📜 License
 
 Proprietary & Confidential
 © 2026 RockyCat. All rights reserved.
+
+---
+
+# 👥 Contribution
+
+This project is currently private. Contribution guidelines will be added in future releases.
+
+---
