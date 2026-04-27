@@ -1,8 +1,8 @@
-# 🥊 RockyCat: Underground Arena
+# 🥊 Rocky Kombat: Underground Arena
 
 ### *Fighting for the Underdogs*
 
-RockyCat: Underground Arena is a **mobile-first GameFi fighting platform** that combines **real-time combat gameplay**, **betting mechanics**, and a **token-based reward system** into one unified ecosystem.
+RockyKombat: Underground Arena is a **mobile-first GameFi fighting platform** that combines **real-time combat gameplay**, **betting mechanics**, and a **token-based reward system** into one unified ecosystem.
 
 > 🎮 Play → 🪙 Earn → 💸 Spend → 🎯 Bet → 🔁 Repeat
 
@@ -10,7 +10,7 @@ RockyCat: Underground Arena is a **mobile-first GameFi fighting platform** that 
 
 # 🚀 Vision
 
-RockyCat aims to create a **competitive, skill-based fighting ecosystem** where:
+RockyKombat aims to create a **competitive, skill-based fighting ecosystem** where:
 
 * Players earn rewards based on performance
 * Spectators can participate through betting
@@ -229,7 +229,7 @@ Update game state
 # 📦 Project Structure
 
 ```text
-rockycat/
+RockyKombat/
 │
 ├── client/               # Unity project (C# game)
 ├── backend/              # Node.js server
@@ -245,8 +245,8 @@ rockycat/
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-repo/rockycat.git
-cd rockycat
+git clone [https://github.com/your-repo/rockycat.git](https://github.com/tabotino-sphere/rockycat-kombat/)
+cd RockyKombat
 ```
 
 ---
